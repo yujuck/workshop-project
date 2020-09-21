@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+.App, .container{
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  background-color:#000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 게임 선택하는 부분 */
+.container__main{
+  width:calc(100% - 200px);
+  height:100%;
+  margin:0;
+  padding:0;
+  color:#fff;
+  float:left;
+}
+h1{
+  width:100%;
+  height:calc(40% - 300px);
+  margin:0;
+  padding:0;
+  color:#fff;
+  text-align:center;
+  font-size:100px;
+  font-weight:400;
+  padding:150px 0;
+}
+.container__gameScore{
+  width:100%;
+  height:60%;
+}
+.container__gameScore--btn{
+  height:70px;
+  border-radius:10px;
+  border:3px solid #fff;
+  background-color:rgba(0,0,0,0);
+  color:#fff;
+  display:block;
+  margin:0 auto 50px;
+  padding:10px 20px;
+  font-size:30px;
+  cursor:pointer;
+  font-family: 'Permanent Marker', cursive;
+}
+.container__gameScore--btn:hover{
+  background-color:rgba(255,255,255,0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 개인 스코어 나타내는 부분 */
+.container__personalScore{
+  width:200px;
+  height:100%;
+  float:left;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container__personalScore--content{
+  width:100%;
+  height:calc(100% / 7);
+  border-bottom:1px solid #eee;
+  border-radius:50px 0 0 50px;
+  background-color:#fff;
 }
-
-.App-link {
-  color: #61dafb;
+.container__personalScore--info{
+  width:50%;
+  height:100%;
+  float:left;
+  display:flex;
+  align-items:center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container__personalScore--info > p{
+  margin:0;
+  text-align:center;
+}
+.container__personalScore--img{
+  width:80%;
+}
+.container__personalScore--name{
+  width:100%;
+  font-size:20px;
+  text-align:center;
+  display:inline-block;
+}
+.container__personalScore--score{
+  width:50%;
+  height:100%;
+  margin:0;
+  float:left;
+  text-align:center;
+  font-size:70px;
+  display:flex;
+  align-items:center;
+}
+.container__personalScore--score > span{
+  margin:0 auto;
 }
