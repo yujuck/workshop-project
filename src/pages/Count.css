@@ -3,6 +3,11 @@
   height:100%;
   margin:0;
   padding:0;
+  background-color:#fff;
+  position:fixed;
+  left:0;
+  top:0;
+  z-index:1;
 }
 
 /* 멤버 보여주는 부분 */
@@ -22,7 +27,7 @@
 }
 .container__teamMember--content{
   width:100%;
-  height:calc(100% / 3);
+  height:calc(100% / 4);
   margin:0;
   display:flex;
   align-items:center;

@@ -1,26 +1,38 @@
 import React from 'react';
 import './Count.css';
-import { count } from 'console';
+
+/* type alias */
+type members1 = {
+  id: String;
+  name: string;
+};
+
+type members2 = {
+  id: String;
+  name: string;
+}
 
 const members1 = [
-  {id : 'aa', name : 'name'},
-  {id : 'bb', name : 'name'},
-  {id : 'cc', name : 'name'},
+  {id : 'aa', name : 'name1'},
+  {id : 'bb', name : 'name2'},
+  {id : 'cc', name : 'name3'},
+  {id : 'cc', name : 'name4'},
 ]
 
 const members2 = [
-  {id : 'dd', name : 'name'},
-  {id : 'ee', name : 'name'},
-  {id : 'ff', name : 'name'},
+  {id : 'dd', name : 'name5'},
+  {id : 'ee', name : 'name6'},
+  {id : 'ff', name : 'name7'},
+  {id : 'ff', name : 'name8'},
 ]
 
 function Team1(){
   return (
     <div className="container__teamMember1">
-      {members1.map( member => (
-        <div className="container__teamMember--content">
+      {members1.map( (member, index) => (
+        <div className="container__teamMember--content" key={index}>
           <p>
-            <img className="container__teamMember--img" src="../user.svg"/>
+            <img className="container__teamMember--img" src="../user.svg"  alt={member.id}/>
             <span className="container__teamMember--name">{member.name}</span>
           </p>
         </div>
@@ -32,10 +44,10 @@ function Team1(){
 function Team2(){
   return (
     <div className="container__teamMember2">
-      {members1.map( member => (
-        <div className="container__teamMember--content">
+      {members2.map( (member, index) => (
+        <div className="container__teamMember--content" key={index}>
           <p>
-            <img className="container__teamMember--img" src="../user.svg"/>
+            <img className="container__teamMember--img" src="../user.svg" alt={member.id}/>
             <span className="container__teamMember--name">{member.name}</span>
           </p>
         </div>
@@ -44,30 +56,41 @@ function Team2(){
   )
 }
 
+/**
+ * state를 생성하기 위해, constructor, super 코드를 쓰는 대신
+ * state를 해당 클래스의 속성 방식으로 사용!
+ * 
+ * ※ 주의 ※
+ * state 속성 옆에 반드시 인터페이스를 명시해주어야 할 것!
+ * 그래야만 constructor 안에서 state를 선언한 것과 같은 효과를 보인다.
+ */
+
+/* interface */
 interface CountProps {
   count1 : number,
   count2 : number,
 }
+class Count extends React.Component<CountProps>{
 
-class Count extends React.Component{
-
-  state = {
+  state:CountProps = {
     count1 : 0,
     count2 : 0
   };
   
   add1 = ()=>{
-    console.log('add');
     this.setState({
       count1 : this.state.count1+1
     });
   };
   add2 = ()=>{
-    console.log('add');
     this.setState({
       count2 : this.state.count2+1
     });
   };
+
+  moveHome = ()=>{
+    document.location.href = "/"
+  }
 
   render(){
     return (
@@ -79,7 +102,7 @@ class Count extends React.Component{
             <p className="container__teamScore--bar">:</p>
             <p className="container__teamScore--count" onClick={this.add2}>{this.state.count2}</p>
           </div>
-          <button>finish</button>
+          <button onClick={this.moveHome}>finish</button>
         </div>
         <Team2 />
       </div>

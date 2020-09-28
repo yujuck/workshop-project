@@ -37,14 +37,19 @@ h1{
   background-color:rgba(0,0,0,0);
   color:#fff;
   display:block;
-  margin:0 auto 50px;
+  margin:0 auto 90px;
   padding:10px 20px;
   font-size:30px;
   cursor:pointer;
   font-family: 'Permanent Marker', cursive;
+  cursor:pointer;
 }
 .container__gameScore--btn:hover{
   background-color:rgba(255,255,255,0.2);
+}
+.container__gameScore--btn > a{
+  color:#fff;
+  text-decoration:none;
 }
 
 /* 개인 스코어 나타내는 부분 */
@@ -55,8 +60,7 @@ h1{
 }
 .container__personalScore--content{
   width:100%;
-  height:calc(100% / 7);
-  border-bottom:1px solid #eee;
+  height:calc(100% / 8);
   border-radius:50px 0 0 50px;
   background-color:#fff;
 }
@@ -92,4 +96,27 @@ h1{
 }
 .container__personalScore--score > span{
   margin:0 auto;
+}
+.container__imgGameBtn{
+  width:100px;
+  height:100px;
+  border-radius:50px;
+  border:3px solid #fff;
+  color:#fff;
+  position:absolute;
+  left:100px;
+  bottom:100px;
+  background-color:rgba(0,0,0,0);
+  cursor:pointer;
+  font-size:16px;
+  line-height:20px;
+  transition:all 0.5s;
+}
+.container__imgGameBtn:hover{
+  background-color:rgba(255,255,255,0.2);
+  transform: rotate(360deg);
+}
+.container__imgGameBtn > a{
+  text-decoration:none;
+  color:#fff;
 }
