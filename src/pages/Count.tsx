@@ -1,4 +1,6 @@
+import { observer } from 'mobx-react';
 import React from 'react';
+import {PointStore} from '../stores/PointStore';
 import './Count.css';
 
 /* type alias */
@@ -66,27 +68,37 @@ function Team2(){
  */
 
 /* interface */
-interface CountProps {
-  count1 : number,
-  count2 : number,
-}
-class Count extends React.Component<CountProps>{
+// interface CountProps {
+//   count1 : number,
+//   count2 : number,
 
-  state:CountProps = {
-    count1 : 0,
-    count2 : 0
-  };
+// }
+
+const pointState = new PointStore(10);
+
+@observer
+class Count extends React.Component<{}>{
+
+  constructor(props:{}){
+    super(props);
+    this.addPoint = this.addPoint.bind(this);
+  }
+
+  // state:CountProps = {
+  //   count1 : 0,
+  //   count2 : 0
+  // };
   
-  add1 = ()=>{
-    this.setState({
-      count1 : this.state.count1+1
-    });
-  };
-  add2 = ()=>{
-    this.setState({
-      count2 : this.state.count2+1
-    });
-  };
+  // add1 = ()=>{
+  //   this.setState({
+  //     count1 : this.state.count1+1
+  //   });
+  // };
+  // add2 = ()=>{
+  //   this.setState({
+  //     count2 : this.state.count2+1
+  //   });
+  // };
 
   moveHome = ()=>{
     document.location.href = "/"
@@ -98,15 +110,23 @@ class Count extends React.Component<CountProps>{
         <Team1 />
         <div className="container__teamScore">
           <div className="container__teamScore--wrap">
-            <p className="container__teamScore--count" onClick={this.add1}>{this.state.count1}</p>
+            {/* <p className="container__teamScore--count" onClick={this.add1}>{this.state.count1}</p>
             <p className="container__teamScore--bar">:</p>
-            <p className="container__teamScore--count" onClick={this.add2}>{this.state.count2}</p>
+            <p className="container__teamScore--count" onClick={this.add2}>{this.state.count2}</p> */}
+            <p className="container__teamScore--count" onClick={()=> this.addPoint() }></p>
+            <div>{pointState.getPoint()}</div>
           </div>
           <button onClick={this.moveHome}>finish</button>
         </div>
         <Team2 />
       </div>
     ); 
+  }
+
+  addPoint(){
+    const point = pointState.getPoint();
+    pointState.setPoint(point +1);
+    console.log(pointState.getPoint())
   }
 }
 
