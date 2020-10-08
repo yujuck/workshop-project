@@ -3,8 +3,9 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 // route components
-import App from '../src/App';
-import ImageGame from '../src/game/ImageGame';
+import App from '../App';
+import ImageGame from '../game/ImageGame';
+import Count from '../pages/Count';
 
 const browserHistory = createBrowserHistory();
 
@@ -13,6 +14,7 @@ const Root: React.FC = () => (
     <Switch>
       <Route path="/" exact component={App} />
       <Route path="/game/image-game" exact component={ImageGame} />
+      <Route path="/count" exact component={Count} />
     </Switch>
   </Router>
 );

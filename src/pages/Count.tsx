@@ -1,4 +1,7 @@
 import React from 'react';
+import { useObserver } from 'mobx-react';
+import { Link } from 'react-router-dom';
+import {point1, point2, gameResult} from '../store'
 import './Count.css';
 
 /* type alias */
@@ -26,7 +29,7 @@ const members2 = [
   {id : 'ff', name : 'name8'},
 ]
 
-function Team1(){
+const Team1 = () =>{
   return (
     <div className="container__teamMember1">
       {members1.map( (member, index) => (
@@ -41,7 +44,7 @@ function Team1(){
   )
 }
 
-function Team2(){
+const Team2 = () =>{
   return (
     <div className="container__teamMember2">
       {members2.map( (member, index) => (
@@ -66,48 +69,55 @@ function Team2(){
  */
 
 /* interface */
-interface CountProps {
-  count1 : number,
-  count2 : number,
-}
-class Count extends React.Component<CountProps>{
+// interface CountProps {
+//   count1 : number,
+//   count2 : number,
+// }
 
-  state:CountProps = {
-    count1 : 0,
-    count2 : 0
-  };
-  
-  add1 = ()=>{
-    this.setState({
-      count1 : this.state.count1+1
-    });
-  };
-  add2 = ()=>{
-    this.setState({
-      count2 : this.state.count2+1
-    });
-  };
+const Count:React.FunctionComponent = () => {
 
-  moveHome = ()=>{
-    document.location.href = "/"
+  const increase1 = () => {
+    return point1.increase();
   }
-
-  render(){
-    return (
-      <div className="Count">
-        <Team1 />
-        <div className="container__teamScore">
-          <div className="container__teamScore--wrap">
-            <p className="container__teamScore--count" onClick={this.add1}>{this.state.count1}</p>
-            <p className="container__teamScore--bar">:</p>
-            <p className="container__teamScore--count" onClick={this.add2}>{this.state.count2}</p>
-          </div>
-          <button onClick={this.moveHome}>finish</button>
+  const increase2 = () => {
+    return point2.increase();
+  }
+  const winner = () => {
+    if(gameResult.round === 1 && point1.number > point2.number) {
+      gameResult.game1_winner = 'team1'
+    } else if(gameResult.round === 1 && point1.number < point2.number){
+      gameResult.game1_winner = 'team2'
+    } else if(gameResult.round === 2 && point1.number > point2.number) {
+      gameResult.game2_winner = 'team1'
+    } else if(gameResult.round === 2 && point1.number < point2.number){
+      gameResult.game2_winner = 'team2'
+    } else if(gameResult.round === 3 && point1.number > point2.number) {
+      gameResult.game3_winner = 'team1'
+    } else if (gameResult.round === 3 && point1.number < point2.number){
+      gameResult.game3_winner = 'team2'
+    } else if(gameResult.round === 4 && point1.number > point2.number) {
+      gameResult.game4_winner = 'team1'
+    } else if(gameResult.round === 4 && point1.number < point2.number){
+      gameResult.game4_winner = 'team2'
+    }
+  }
+  return useObserver(() =>(
+    <div className="Count">
+      <Team1 />
+      <div className="container__teamScore">
+        <div className="container__teamScore--wrap">
+          <p className="container__teamScore--count" onClick={increase1}>{point1.number}</p>
+          <p className="container__teamScore--bar">:</p>
+          <p className="container__teamScore--count" onClick={increase2}>{point2.number}</p>
         </div>
-        <Team2 />
+        <Link to="/">
+          <button className="finish-btn" onClick={winner}>finish</button>
+        </Link>
+        
       </div>
-    ); 
-  }
+      <Team2 />
+    </div>
+  ))
 }
 
 export default Count;

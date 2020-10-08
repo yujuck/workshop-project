@@ -82,7 +82,7 @@
   line-height:500px;
 }
 
-.container__teamScore > button{
+.finish-btn{
   display:block;
   width:300px;
   height:80px;
@@ -95,6 +95,6 @@
   font-size:30px;
   cursor:pointer;
 }
-.container__teamScore > button:hover{
+.finish-btn:hover{
   background-color:#ddd;
 }
