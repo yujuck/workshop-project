@@ -62,17 +62,19 @@ const App = () => {
 
   return (
     <div className="Main">
-      <h1>2020<br/>WEB2 WORKSHOP</h1>
-      {gameList.map(list => (
-        <div>
-          <Link to="/count">
-            <button className={'gameScore-btn'+`${list.id}`} key={list.id} onClick={roundChange}>
-              {list.name}
-            </button>
-          </Link>
-        </div>
-      ))
-      }      
+      <div className="Main__wrap">
+        <h1>2020<br/>WEB2 WORKSHOP</h1>
+        {gameList.map(list => (
+          <div>
+            <Link to="/count">
+              <button className={'gameScore-btn'+`${list.id}`} key={list.id} onClick={roundChange}>
+                {list.name}
+              </button>
+            </Link>
+          </div>
+        ))
+        }   
+      </div>   
     </div>
   )
 }
