@@ -13,7 +13,7 @@ const Root: React.FC = () => (
   <Router history={browserHistory}>
     <Switch>
       <Route path="/" exact component={App} />
-      <Route path="/game/image-game" exact component={ImageGame} />
+      <Route path="/game" exact component={ImageGame} />
       <Route path="/count" exact component={Count} />
     </Switch>
   </Router>

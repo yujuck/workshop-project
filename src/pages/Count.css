@@ -72,6 +72,12 @@
   line-height:600px;
   border-radius:50px;
 }
+.container__teamScore--count:first-child{
+  background-color:red;
+}
+.container__teamScore--count:last-child{
+  background-color:blue;
+}
 .container__teamScore--bar{
   width:100px;
   height:100%;

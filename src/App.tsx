@@ -65,7 +65,7 @@ const App = () => {
       <div className="Main__wrap">
         <h1>2020<br/>WEB2 WORKSHOP</h1>
         {gameList.map(list => (
-          <div>
+          <div className="button-wrap">
             <Link to="/count">
               <button className={'gameScore-btn'+`${list.id}`} key={list.id} onClick={roundChange}>
                 {list.name}
@@ -73,8 +73,11 @@ const App = () => {
             </Link>
           </div>
         ))
-        }   
-      </div>   
+        }
+      </div>
+      <Link to="/game">
+        <button className="container__imgGameBtn">이미지게임<br/>바로가기</button>
+      </Link>
     </div>
   )
 }
