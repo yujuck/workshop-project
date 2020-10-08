@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import React from 'react';
 import { useObserver } from 'mobx-react';
 import { Link } from 'react-router-dom';
