@@ -8,6 +8,28 @@
   left:0;
   top:0;
 }
-.ImageGame > h1{
-  color:#000;
+.whack__wrap {
+  font-size: 200px;
+  font-weight: 700; 
+  font-family: cursive;
+  color: rgb(55, 55, 55);
+  text-align: center;
+  text-shadow: 3px 3px 3px rgb(255, 96, 96);
+  margin: 150px;
+}
+.goHome > button {
+  display:block;
+  width:300px;
+  height:80px;
+  line-height:80px;
+  border-radius:40px;
+  border:none;
+  position:absolute;
+  left:calc(50% - 150px);
+  bottom:50px;
+  font-size:30px;
+  cursor:pointer;
+}
+.goHome > button:hover{
+  background-color:#ddd;
 }
